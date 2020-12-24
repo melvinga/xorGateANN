@@ -119,6 +119,18 @@ def partialErrorOverWeightAtHiddenNode(mat1, mat2, mat3):
     val = np.multiply(mat3, np.transpose(val))
     return val
 
+# Calculate value of new weights
+def newValueOfWeights(lr, oldWeights, fr):
+    val = -1
+
+    if (oldWeights.shape == fr.shape):
+        val = np.subtract(oldWeights, np.multiply(lr, fr))
+    else:
+        errMsg = "Order of matrices differ. Will not compute new weights."
+        print("ERROR: ",errMsg)
+
+    return val
+
 '''
 # weights between i1 node and hidden layer nodes
 w_iA_h0 = np.random.rand(0, 1)
